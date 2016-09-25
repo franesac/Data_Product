@@ -1,0 +1,47 @@
+---
+title       : Data Product
+subtitle    : Find your Game
+author      : Francisco Javier Estrada
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Web Application functionality
+
+
+This is a site where you can find the best game for you.
+
+We only need that you provide the game detail like the Price, Score, New/Used, categoy and console.
+
+The result contains the games that fit your filters.
+
+--- .class #id 
+
+## Example of data
+
+```{r, include=FALSE}
+games <- read.csv(file = "Games.csv" ,sep = ";" )
+games <- data.frame(games)
+games$NEW_USED <- factor(games$NEW_USED)
+```
+
+```{r}
+head(games)
+```
+
+--- .class #id 
+
+## Plot
+
+The relationship between PRICE and SCORE in the GAMES dataset.
+
+```{r simple-plot, fig.height = 6, fig.align = 'center', message = F}
+require(ggplot2)
+qplot(PRICE, SCORE, data = games)
+
+```
